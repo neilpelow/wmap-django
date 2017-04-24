@@ -1,0 +1,85 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+{% load leaflet_tags %}
+
+{% block content %}
+    <h3>User Profile</h3>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p><span class="error">
+                    <strong>{{ error|escape }}</strong>
+                </span></p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p><span class="error">
+                <strong>{{ error|escape }}</strong>
+            </span></p>
+        {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <form method="post" action="{% url 'app:userprofile' %}">
+            {% csrf_token %}
+            <table style="padding: 10px; width: 100%">
+                <tr>
+                    <td style="text-align: right; font-family: sans-serif, Arial; font-style: italic; font-weight: normal">
+                        Username
+                    </td>
+                    <td style="font-family: sans-serif, Arial; font-style: italic; font-weight: bold">{{ object.username }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; font-family: sans-serif, Arial; font-style: italic; font-weight: normal">
+                        Last login
+                    </td>
+                    <td style="font-family: sans-serif, Arial; font-style: italic; font-weight: bold">{{ object.last_login }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">{{ form.first_name.label_tag }}</td>
+                    <td>{{ form.first_name }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">{{ form.last_name.label_tag }}</td>
+                    <td>{{ form.last_name }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">{{ form.email.label_tag }}</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;"></td>
+                    <td><input type="submit" value="Update Profile"/></td>
+                </tr>
+                {#                {{ form.as_table }}#}
+            </table>
+
+
+        </form>
+    {% else %}
+        <p class="error">You are not logged in.</p>
+    {% endif %}
+
+    <p id="geom" style="visibility: hidden; display: none">{{ object.last_location.geojson }}</p>
+
+    <script>
+        function map_init(map, options) {
+            var geom = JSON.parse($("#geom").html());
+            var myLatLon = L.latLng([geom.coordinates[1], geom.coordinates[0]]);
+
+            geom = L.geoJson(geom);
+            geom.addTo(map);
+
+            map.setView(myLatLon, 16);
+        }
+    </script>
+
+    <h3>Last known location</h3>
+    <div style="text-align: center">
+        {% leaflet_map "my_map" callback="map_init" %}
+    </div>
+
+{% endblock %}
+

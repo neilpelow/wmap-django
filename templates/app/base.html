@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Finder - Web Mapping 2017, Sample Application</title>
+
+    {% load leaflet_tags %}
+    {% load static %}
+
+    {% leaflet_js plugins="forms" %}
+    {% leaflet_css plugins="forms" %}
+
+{#    <link rel="shortcut icon" href="{% static "Users/images/favicon.ico" %}" type="image/x-icon"/>#}
+    <link rel="stylesheet" href="{% static "app/css/my_style.css" %}" type="text/css"/>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{% static "app/js/my_script.js" %}"></script>
+</head>
+<body>
+
+<header>
+    <table style="width: 100%">
+        <tr>
+            <td class="app-header" style="text-align: left; width: 55%;">
+                Friend Finder - Web Mapping 2017, Sample Application
+            </td>
+            <td class="app-header-small" style="text-align: right; width: 45%;">
+                {% if user.is_authenticated %}
+                    {{ user.get_full_name }} ({{ user.username }}) |
+                    <a href="{% url 'app:userprofile' %}">My Profile</a> |
+                    <a href="{% url 'app:logout' %}">Log Out</a>
+                {% else %}
+                    <a href="{% url 'app:login' %}">Log In</a> |
+                    <a href="{% url 'app:signup' %}">Sign Up</a>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</header>
+
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>

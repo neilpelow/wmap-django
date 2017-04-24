@@ -1,0 +1,46 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3>Log In</h3>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p><span class="error">
+                    <strong>{{ error|escape }}</strong>
+                </span></p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p><span class="error">
+                <strong>{{ error|escape }}</strong>
+            </span></p>
+        {% endfor %}
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+        <p class="error">You are already logged in.</p>
+    {% else %}
+
+        <form method="post" action="{% url 'app:login' %}">
+            {% csrf_token %}
+            <table>
+{#                <tr>#}
+{#                    <td>{{ form.username.label_tag }}</td>#}
+{#                    <td>{{ form.username }}</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td>{{ form.password.label_tag }}</td>#}
+{#                    <td>{{ form.password }}</td>#}
+{#                </tr>#}
+                {{ form.as_table }}
+            </table>
+
+            <input type="submit" value="Log In"/>
+        </form>
+    {% endif %}
+
+{% endblock %}

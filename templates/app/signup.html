@@ -1,0 +1,60 @@
+{% extends "app/base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <h3>Sign Up</h3>
+
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p><span class="error">
+                    <strong>{{ error|escape }}</strong>
+                </span></p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p><span class="error">
+                <strong>{{ error|escape }}</strong>
+            </span></p>
+        {% endfor %}
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <p class="error">You are already logged in.</p>
+    {% else %}
+
+        <form method="post" action="{% url 'app:signup' %}">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>{{ form.username.label_tag }}</td>
+                    <td>{{ form.username }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password.label_tag }}</td>
+                    <td>{{ form.password }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.password2.label_tag }}</td>
+                    <td>{{ form.password2 }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.first_name.label_tag }}</td>
+                    <td>{{ form.first_name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.last_name.label_tag }}</td>
+                    <td>{{ form.last_name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.email.label_tag }}</td>
+                    <td>{{ form.email }}</td>
+                </tr>
+            </table>
+
+            <input type="submit" value="Sign Up"/>
+        </form>
+    {% endif %}
+
+{% endblock %}
