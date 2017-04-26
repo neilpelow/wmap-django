@@ -1,8 +1,11 @@
+import urllib2
+
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 from django.forms import ValidationError
 from django.views.generic import TemplateView
@@ -11,7 +14,12 @@ from django.views.generic.edit import FormView, UpdateView, CreateView, DeleteVi
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
 from . import forms
+
 
 
 @login_required
@@ -99,3 +107,14 @@ class UserProfile(UpdateView):
     def get_object(self, queryset=None):
         return get_user_model().objects.get(pk=self.request.user.pk)
 
+    @api_view(["GET", ])
+    @permission_classes((IsAuthenticated,))
+    @csrf_exempt
+    def get_station_data(request):
+        file = urllib2.urlopen(
+            'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
+        data = file.read()
+        file.close()
+        for item in data:
+            print(item)
+        return Response(data, status=200)
