@@ -88,9 +88,6 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'web-mapping',
         'USER': 'neilpelow',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '5432',
     }
 }
 
