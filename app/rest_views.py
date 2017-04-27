@@ -123,8 +123,5 @@ def get_station_data(request):
             'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
     data = file.read()
     file.close()
-    for item in data:
-        print(item)
-
-    data = list(data)
+    print(data)
     return Response({"data": data}, status=status.HTTP_200_OK)
