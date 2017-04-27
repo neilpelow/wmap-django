@@ -16,7 +16,7 @@ from rest_framework.authtoken.models import Token
 # from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.utils.decorators import method_decorator
-
+import urllib.request as urllib2
 
 class UsersList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -127,4 +127,4 @@ def get_station_data(request):
         print(item)
 
     data = list(data)
-    return Response({"token": data.format(my_token.key)}, status=status.HTTP_200_OK)
+    return Response({"data": data}, status=status.HTTP_200_OK)
