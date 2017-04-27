@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from . import views, rest_views
 
 urlpatterns = [
+    url(r'^get_station_data/$', rest_views.get_station_data, name='get_station_data'),
     url(r'^tokenlogin/$', rest_views.token_login, name='token-login'),
     url(r'^userme/$', rest_views.UserMe_R.as_view(), name='user-me'),
     url(r'^users/$', rest_views.UsersList.as_view(), name='users'),

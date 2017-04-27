@@ -113,3 +113,18 @@ def token_login(request):
             return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({"detail": "Invalid User Id of Password"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET", ])
+@permission_classes((permissions.AllowAny,))
+@csrf_exempt
+def get_station_data(request):
+    file = urllib2.urlopen(
+            'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
+    data = file.read()
+    file.close()
+    for item in data:
+        print(item)
+
+    data = list(data)
+    return Response({"token": data.format(my_token.key)}, status=status.HTTP_200_OK)
