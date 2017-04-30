@@ -20,6 +20,7 @@ from django.utils.decorators import method_decorator
 import urllib as urllib2
 import json
 
+
 class UsersList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = serializers.UserOtherSerializer
@@ -89,7 +90,7 @@ class UpdatePosition(generics.UpdateAPIView):
 
             if point:
                 # serializer.instance.last_location = point
-                serializer.save(last_location = point)
+                serializer.save(last_location=point)
             return serializer
         except:
             pass
@@ -122,11 +123,12 @@ def token_login(request):
 @csrf_exempt
 def get_station_data(request):
     file = urllib2.urlopen(
-            'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
+        'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
     data = file.read()
     file.close()
     print(data)
     return Response({"data": data}, status=status.HTTP_200_OK)
+
 
 @api_view(["GET", ])
 @permission_classes((permissions.AllowAny,))
@@ -134,6 +136,5 @@ def get_station_data(request):
 def get_road_data(request):
     resource_url = 'http://fixyourstreet.ie/api?task=incidents&by=locname&name=Dublin'
     response = json.loads(urllib2.urlopen(resource_url).read())
-    file.close()
     print(response)
     return Response({"data": response}, status=status.HTTP_200_OK)

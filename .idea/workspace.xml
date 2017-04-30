@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58a75fb6-6c98-41ed-b9c2-cc2cb5fba028" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/wmap-django.iml" afterPath="$PROJECT_DIR$/.idea/wmap-django.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/rest_urls.py" afterPath="$PROJECT_DIR$/app/rest_urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/rest_views.py" afterPath="$PROJECT_DIR$/app/rest_views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +33,8 @@
       <file leaf-file-name="rest_views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/rest_views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="74">
-              <caret line="83" column="41" lean-forward="true" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
+            <state relative-caret-position="871">
+              <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -55,8 +52,8 @@
       <list>
         <option value="$PROJECT_DIR$/wmap2017/settings.py" />
         <option value="$PROJECT_DIR$/app/views.py" />
-        <option value="$PROJECT_DIR$/app/rest_views.py" />
         <option value="$PROJECT_DIR$/app/rest_urls.py" />
+        <option value="$PROJECT_DIR$/app/rest_views.py" />
       </list>
     </option>
   </component>
@@ -566,8 +563,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/rest_views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="83" column="41" lean-forward="true" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
+        <state relative-caret-position="871">
+          <caret line="140" column="0" lean-forward="true" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
