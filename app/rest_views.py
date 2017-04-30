@@ -16,7 +16,9 @@ from rest_framework.authtoken.models import Token
 # from rest_framework.decorators import api_view, permission_classes
 from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 from django.utils.decorators import method_decorator
+
 import urllib as urllib2
+import json
 
 class UsersList(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
@@ -125,3 +127,13 @@ def get_station_data(request):
     file.close()
     print(data)
     return Response({"data": data}, status=status.HTTP_200_OK)
+
+@api_view(["GET", ])
+@permission_classes((permissions.AllowAny,))
+@csrf_exempt
+def get_road_data(request):
+    resource_url = 'http://fixyourstreet.ie/api?task=incidents&by=locname&name=Dublin'
+    response = json.loads(urllib2.urlopen(resource_url).read())
+    file.close()
+    print(response)
+    return Response({"data": response}, status=status.HTTP_200_OK)
