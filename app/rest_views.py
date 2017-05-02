@@ -137,4 +137,7 @@ def get_station_data(request):
 def get_road_data(request):
     resource_url = 'http://fixyourstreet.ie/api?task=incidents&by=locname&name=Dublin'
     response = json.loads(urllib2.urlopen(resource_url).read())
-    return Response({"data": json.dumps(response, 4)}, status=status.HTTP_200_OK)
+    print(response)
+    response = json.dumps(response)
+    print(response)
+    return Response({"data": response}, status=status.HTTP_200_OK)
