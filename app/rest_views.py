@@ -4,6 +4,7 @@ from rest_framework import permissions
 from . import permissions as my_permissions
 from wmap2017 import settings
 
+
 from django.contrib.auth import authenticate, login, logout, get_user_model
 from rest_framework import permissions, authentication, status, generics
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
@@ -136,5 +137,4 @@ def get_station_data(request):
 def get_road_data(request):
     resource_url = 'http://fixyourstreet.ie/api?task=incidents&by=locname&name=Dublin'
     response = json.loads(urllib2.urlopen(resource_url).read())
-    print(response)
-    return Response({"data": response}, status=status.HTTP_200_OK)
+    return Response({"data": json.dumps(response, 4)}, status=status.HTTP_200_OK)
