@@ -125,7 +125,6 @@ def get_station_data(request):
     file = urllib2.urlopen(
         'https://api.jcdecaux.com/vls/v1/stations?contract=dublin&apiKey=2dee7447852fde472ca646351ad81d1eb7eed883')
     data = file.read()
-    data = json.dumps(data)
     file.close()
 
     return Response({"data": data}, status=status.HTTP_200_OK)
