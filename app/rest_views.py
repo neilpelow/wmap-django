@@ -91,7 +91,7 @@ class UpdatePosition(generics.UpdateAPIView):
 
             if point:
                 # serializer.instance.last_location = point
-                serializer.save(last_location=point)
+                serializer.save(last_location = point)
             return serializer
         except:
             pass
@@ -117,6 +117,36 @@ def token_login(request):
             return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({"detail": "Invalid User Id of Password"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(["GET", ])
+@permission_classes((permissions.AllowAny,))
+@csrf_exempt
+def register(request):
+    print (request.GET)
+
+    print("first bp hit")
+    if (not request.GET["username"]) or (not request.GET["password"] or (not request.GET["email"])):
+        return Response({"detail": "Missing username and/or password and/or email"}, status=status.HTTP_400_BAD_REQUEST)
+        print("no values")
+    try:
+        user = get_user_model().objects.get(username=request.GET["username"])
+        if user:
+            print("user already exists")
+            return Response({"detail": "User already exists"}, status=status.HTTP_400_BAD_REQUEST)
+    except get_user_model().DoesNotExist:
+        user = get_user_model().objects.create_user(username=request.GET["username"])
+
+        # Set user fields provided
+        print(request.GET["password"] + request.GET["firstname"] + request.GET["lastname"] + request.GET["email"])
+        user.set_password(request.GET["password"])
+        user.first_name = request.GET["firstname"]
+        user.last_name = request.GET["lastname"]
+        user.email = request.GET["email"]
+        user.save()
+        print("done")
+
+        return Response({"detail": "Successfully created"}, status=status.HTTP_201_CREATED)
 
 
 @api_view(["GET", ])
