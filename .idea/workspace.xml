@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="58a75fb6-6c98-41ed-b9c2-cc2cb5fba028" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/rest_views.py" afterPath="$PROJECT_DIR$/app/rest_views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/rest_urls.py" afterPath="$PROJECT_DIR$/app/rest_urls.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +17,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="rest_urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rest_urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/rest_urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -30,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rest_views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rest_views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/rest_views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="532">
@@ -52,8 +51,8 @@
       <list>
         <option value="$PROJECT_DIR$/wmap2017/settings.py" />
         <option value="$PROJECT_DIR$/app/views.py" />
-        <option value="$PROJECT_DIR$/app/rest_urls.py" />
         <option value="$PROJECT_DIR$/app/rest_views.py" />
+        <option value="$PROJECT_DIR$/app/rest_urls.py" />
       </list>
     </option>
   </component>
@@ -621,22 +620,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/rest_urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/rest_views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="148" column="91" lean-forward="false" selection-start-line="148" selection-start-column="91" selection-end-line="148" selection-end-column="91" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/rest_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
